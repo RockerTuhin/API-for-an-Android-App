@@ -19,19 +19,52 @@ class Item extends JsonResource
     public function toArray($request)
     {
         //return parent::toArray($request);
-        return [
-            // 'id' => $this->id,
-            
-            'item' => $this->item_name,
-            'updated_date_notice' => $this->item_updated_date,
+        $content = ContentResource::collection(Content::where(['item_id'=>$this->id,'subItem_id'=>NULL])->orderBy('order_id','asc')->get());
 
-            'contents' => ContentResource::collection(Content::where(['item_id'=>$this->id,'subItem_id'=>NULL,'subSubItem_id'=>NULL])->orderBy('order_id','asc')->get()),
-            'details' => SubItemResource::collection(SubItem::where('item_id',$this->id)->orderBy('order_id','asc')->get()),
-            //FOR ALL DATA OF HOTEL
-            //'singleSubitem' => new ItemResource(Item::find(1)),//FOR SINGLE DATA OF Item
-            // 'secret' => $this->when(Auth::user()->isAdmin(), 'secret-value'),
-            // 'created_at' => $this->created_at,
-            // 'updated_at' => $this->updated_at,
-        ];
+        $details = SubItemResource::collection(SubItem::where('item_id',$this->id)->orderBy('order_id','asc')->get());
+        if($content->isNotEmpty())
+        {
+            return [
+                // 'id' => $this->id,
+                
+                'item' => $this->item_name,
+                'updated_date_notice' => $this->item_updated_date,
+                'details' => ContentResource::collection(Content::where(['item_id'=>$this->id,'subItem_id'=>NULL])->orderBy('order_id','asc')->get()),
+                //FOR ALL DATA OF HOTEL
+                //'singleSubitem' => new ItemResource(Item::find(1)),//FOR SINGLE DATA OF Item
+                // 'secret' => $this->when(Auth::user()->isAdmin(), 'secret-value'),
+                // 'created_at' => $this->created_at,
+                // 'updated_at' => $this->updated_at,
+            ];
+        }
+        if($details->isNotEmpty())
+        {
+            return [
+                // 'id' => $this->id,
+                
+                'item' => $this->item_name,
+                'updated_date_notice' => $this->item_updated_date,
+                'details' => SubItemResource::collection(SubItem::where('item_id',$this->id)->orderBy('order_id','asc')->get()),
+                //FOR ALL DATA OF HOTEL
+                //'singleSubitem' => new ItemResource(Item::find(1)),//FOR SINGLE DATA OF Item
+                // 'secret' => $this->when(Auth::user()->isAdmin(), 'secret-value'),
+                // 'created_at' => $this->created_at,
+                // 'updated_at' => $this->updated_at,
+            ];
+        }
+        // return [
+        //     // 'id' => $this->id,
+            
+        //     'item' => $this->item_name,
+        //     'updated_date_notice' => $this->item_updated_date,
+        //     if()
+        //     'contents' => ContentResource::collection(Content::where(['item_id'=>$this->id,'subItem_id'=>NULL])->orderBy('order_id','asc')->get()),
+        //     'details' => SubItemResource::collection(SubItem::where('item_id',$this->id)->orderBy('order_id','asc')->get()),
+        //     //FOR ALL DATA OF HOTEL
+        //     //'singleSubitem' => new ItemResource(Item::find(1)),//FOR SINGLE DATA OF Item
+        //     // 'secret' => $this->when(Auth::user()->isAdmin(), 'secret-value'),
+        //     // 'created_at' => $this->created_at,
+        //     // 'updated_at' => $this->updated_at,
+        // ];
     }
 }

@@ -35,7 +35,7 @@ class Content extends JsonResource
                 $this->designation = '';
             }
 
-            if($this->mobile_one != '+880')
+            if($this->mobile_one != '+880' && $this->mobile_one != Null)
             {
                 $this->mobile_one = 'Mobile: <a href=\'tel:\'' . $this->mobile_one . '\'>' . $this->mobile_one . '</a>';
             }
@@ -44,7 +44,7 @@ class Content extends JsonResource
                 $this->mobile_one = '';
             }
 
-            if($this->mobile_two != '+880')
+            if($this->mobile_two != '+880' && $this->mobile_two != Null)
             {
                 $this->mobile_two = ', <a href=\'tel:\'' . $this->mobile_two . '\'>' . $this->mobile_two . '</a>' .  '<br/>';
             }
@@ -60,7 +60,7 @@ class Content extends JsonResource
                 }
             }
 
-            if($this->phone_one != '+880')
+            if($this->phone_one != '+880' && $this->phone_one != Null)
             {
                 $this->phone_one = 'Phone: <a href=\'tel:\'' . $this->phone_one . '\'>' . $this->phone_one . '</a>';
             }
@@ -69,7 +69,7 @@ class Content extends JsonResource
                 $this->phone_one = '';
             }
 
-            if($this->phone_two != '+880')
+            if($this->phone_two != '+880' && $this->phone_two != Null)
             {
                 $this->phone_two = ', <a href=\'tel:\'' . $this->phone_two . '\'>' . $this->phone_two . '</a>' .  '<br/>';
             }

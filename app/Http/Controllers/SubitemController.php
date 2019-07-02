@@ -29,7 +29,7 @@ class SubitemController extends Controller
     public function inserSubItem(Request $request)
     {
         $data = array();
-        $data['subitem_name'] = $request->subitem_name;
+        $data['subitem_name'] = "".$request->subitem_name;
         $data['item_id'] = $request->item_id;
         $data['order_id'] = $request->order_id;
         $inserItem=DB::table('subItems')
@@ -56,7 +56,7 @@ class SubitemController extends Controller
     public function updateSubItem($item_id,$id,Request $request)
     {
         $data = array();
-        $data['subitem_name'] = $request->subitem_name;
+        $data['subitem_name'] = "".$request->subitem_name;
         $data['item_id'] = $request->item_id;
         $data['order_id'] = $request->order_id;
         $updateSubItem=DB::table('subItems')->where(['id'=>$id,'item_id'=>$item_id])->update($data);
@@ -79,7 +79,6 @@ class SubitemController extends Controller
         $deleteSubItem=DB::table('subItems')->where(['id'=>$id,'item_id'=>$item_id])->delete();
         
         if ($deleteSubItem) {
-                 $deleteSubSubItem = DB::table('subSubItems')->where(['item_id'=>$item_id,'subItem_id'=>$id])->delete();
                  $deleteContents = DB::table('contents')->where(['item_id'=>$item_id,'subItem_id'=>$id])->delete();
                  $notification=array(
                  'messege'=>'Successfully Data Deleted',

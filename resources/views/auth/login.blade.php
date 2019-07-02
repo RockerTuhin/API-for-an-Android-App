@@ -77,7 +77,7 @@
             <div class="panel panel-color panel-primary panel-pages">
                 <div class="panel-heading bg-img"> 
                     <div class="bg-overlay"></div>
-                    <h3 class="text-center m-t-10 text-white">  <strong>SAU Directory</strong> </h3>
+                    <h3 class="text-center m-t-10 text-white">  <strong>NSTU DIARY</strong> </h3>
                 </div> 
 
 

@@ -24,8 +24,8 @@ class SubItem extends JsonResource
             // 'item_id' => $this->item_id,
 
             'title' => $this->subitem_name,
-            'contents' => ContentResource::collection(Content::where(['item_id'=>$this->item_id,'subItem_id'=>$this->id,'subSubItem_id'=>NULL])->orderBy('order_id','asc')->get()),
-            'details' => SubSubItemResource::collection(SubSubItem::where(['item_id'=>$this->item_id,'subItem_id'=>$this->id])->orderBy('order_id','asc')->get()),
+            'contents' => ContentResource::collection(Content::where(['item_id'=>$this->item_id,'subItem_id'=>$this->id])->orderBy('order_id','asc')->get()),
+            // 'details' => SubSubItemResource::collection(SubSubItem::where(['item_id'=>$this->item_id,'subItem_id'=>$this->id])->orderBy('order_id','asc')->get()),
             //'subitems' => ItemResource::collection(SubItem::where('item_id',$this->id)->get()),//FOR ALL DATA OF HOTEL
             //'singleSubitem' => new ItemResource(Item::find(1)),//FOR SINGLE DATA OF Item
             // 'secret' => $this->when(Auth::user()->isAdmin(), 'secret-value'),

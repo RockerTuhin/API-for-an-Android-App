@@ -29,8 +29,8 @@ class ItemController extends Controller
     public function inserItem(Request $request)
     {
         $data = array();
-        $data['item_name'] = $request->item_name;
-        $data['item_updated_date'] = $request->item_updated_date;
+        $data['item_name'] = "".$request->item_name;
+        $data['item_updated_date'] = "".$request->item_updated_date;
         $data['order_id'] = $request->order_id;
         $inserItem=DB::table('items')
                          ->insert($data);
@@ -56,8 +56,8 @@ class ItemController extends Controller
     public function updateItem($id,Request $request)
     {
         $data = array();
-        $data['item_name'] = $request->item_name;
-        $data['item_updated_date'] = $request->item_updated_date;
+        $data['item_name'] = "".$request->item_name;
+        $data['item_updated_date'] = "".$request->item_updated_date;
         $data['order_id'] = $request->order_id;
         $updateItem = DB::table('items')->where('id',$id)->update($data);
         if ($updateItem) {
@@ -82,7 +82,6 @@ class ItemController extends Controller
 
         if ($deleteItem) {
                  $deleteSubItem=DB::table('subItems')->where('item_id',$id)->delete();
-                 $deleteSubSubItem = DB::table('subSubItems')->where('item_id',$id)->delete();
                  $deleteContents = DB::table('contents')->where('item_id',$id)->delete();
                  $notification=array(
                  'messege'=>'Successfully Data Deleted',

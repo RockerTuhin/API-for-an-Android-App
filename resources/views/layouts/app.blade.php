@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>NSTU DIARY</title>
     {{-- <!-- Scripts -->
     <script src="{{ asset('public/js/app.js') }}" defer></script>
     <!-- Styles -->
@@ -55,7 +55,10 @@
                 <div class="navbar navbar-default" role="navigation">
                     <div class="container">
                         <div class="">
-                            
+                            <div class="pull-left">
+                                {{-- <a class="logo"><span>Result Prediction System </span></a> --}}
+                                <a class="logo" style="margin-left: 525px;">NSTU DIARY</a>
+                            </div>
                             {{-- <div class="pull-left">
                                 <button class="button-menu-mobile open-left">
                                     <i class="fa fa-bars"></i>
@@ -241,28 +244,9 @@
                                                         <ul style="">
                                                             <li><a href="{{ URL::to('/edit-subitem/'.$values->id.'/'.$subValues->id) }}"><span>Edit {{ $subValues->subitem_name }}</span></a></li>
                                                             <li><a id="delete" href="{{ URL::to('/delete-subitem/'.$values->id.'/'.$subValues->id) }}"><span>Delete {{ $subValues->subitem_name }}</span></a></li>
-                                                            <li><a href="{{ URL::to('/add-sub-subitem/'.$values->id.'/'.$subValues->id) }}"><span>Add Sub of(Sub Item)</span></a></li>
                                                             <li><a href="{{ URL::to('/add-contents-two/'.$values->id.'/'.$subValues->id) }}"><span>Add Contents</span></a></li>
                                                             <li><a href="{{ URL::to('/show-contents-two/'.$values->id.'/'.$subValues->id) }}"><span>Show Contents</span></a></li>
-                                                            <li class="has_sub">
-                                                                <a href="javascript:void(0);" class="waves-effect"><span>All Sub of(Sub Item)</span> <span class="pull-right"><i class="md md-add"></i></span></a>
-                                                                @php
-                                                                $allSubSubItems = DB::table('subSubItems')->where(['item_id'=>$values->id,'subItem_id'=>$subValues->id])->get();
-                                                                @endphp
-                                                                <ul style="">
-                                                                    @foreach($allSubSubItems as $subSubValues)
-                                                                    <li class="has_sub">
-                                                                        <a href="javascript:void(0);" class="waves-effect"><span>{{ $subSubValues->sub_subitem_name }}</span> <span class="pull-right"><i class="md md-add"></i></span></a>
-                                                                        <ul style="">
-                                                                            <li><a href="{{ URL::to('/edit-sub-subItem/'.$values->id.'/'.$subValues->id.'/'.$subSubValues->id) }}"><span>Edit {{ $subSubValues->sub_subitem_name }}</span></a></li>
-                                                                            <li><a id="delete" href="{{ URL::to('/delete-sub-subItem/'.$values->id.'/'.$subValues->id.'/'.$subSubValues->id) }}"><span>Delete {{ $subSubValues->sub_subitem_name }}</span></a></li>
-                                                                            <li><a href="{{ URL::to('/add-contents-three/'.$values->id.'/'.$subValues->id.'/'.$subSubValues->id) }}"><span>Add Contents</span></a></li>
-                                                                            <li><a href="{{ URL::to('/show-contents-three/'.$values->id.'/'.$subValues->id.'/'.$subSubValues->id) }}"><span>Show Contents</span></a></li>
-                                                                        </ul>
-                                                                    </li>
-                                                                    @endforeach
-                                                                </ul>
-                                                            </li>
+                                                           
                                                         </ul>
                                                     </li>
                                                     @endforeach

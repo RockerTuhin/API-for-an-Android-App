@@ -17,7 +17,6 @@ class CreateContentsTable extends Migration
             $table->bigIncrements('id');
             $table->integer('item_id');
             $table->integer('subItem_id')->nullable();
-            $table->integer('subSubItem_id')->nullable();
             $table->string('title')->nullable();
             $table->text('hints')->nullable();
             $table->text('name')->nullable();
